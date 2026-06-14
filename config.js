@@ -21,7 +21,7 @@ const CONFIG = {
     bairro: "Alto da Boa Vista",
     cidade: "Rio de Janeiro - RJ",
     cep: "20531-330",
-    horario: "17h00",
+    horario: "16h00",
     observacoes: "Cerimônia e festa acontecerão no mesmo local.",
     foto: "assets/imagens/chateau-do-lago-enfesta.png",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ch%C3%A2teau%20do%20Lago%20Enfesta%20Estr.%20do%20A%C3%A7ude%2C%20707%20-%20Alto%20da%20Boa%20Vista%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020531-330"
@@ -122,7 +122,7 @@ const CONFIG = {
     },
     {
       titulo: "O Grande Dia",
-      data: "07 Outubro, 2028",
+      data: "08 OUTUBRO, 2028",
       texto: "Depois de muito planejamento, organização e inúmeros sonhos compartilhados, o casal decidiu que queria tornar seu casamento ainda mais especial, escolhendo para esse momento único o mesmo dia em que completam seis anos juntos. Seis anos desde o primeiro sim, aquele que marcou o início de uma linda história construída com amor, cumplicidade, respeito e parceria. Ao longo dessa trajetória, viveram momentos inesquecíveis, superaram desafios, celebraram conquistas e fortaleceram, dia após dia, os laços que os unem. Por isso, a escolha dessa data carrega um significado profundo: ela simboliza não apenas a celebração de tudo o que viveram até aqui, mas também a renovação da promessa de continuarem caminhando lado a lado. No mesmo dia em que deram o primeiro passo rumo a essa história de amor, decidiram dar um novo e ainda mais importante passo, encerrando um capítulo repleto de memórias, aprendizados e felicidade para iniciar um novo e lindo capítulo, agora como marido e mulher.",
       foto: "assets/imagens/historia/05-grande-dia.jpg",
       foco: "center 18%"
