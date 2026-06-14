@@ -16,19 +16,19 @@ const CONFIG = {
   dataCasamento: "2028-10-07T17:00:00",
 
   cerimonia: {
-    local: "Águas da Prata",
-    endereco: "Rua Soldado Antônio da Silveira, 28",
-    bairro: "Rio da Prata - Campo Grande",
+    local: "Château do Lago Enfesta",
+    endereco: "Estr. do Açude, 707",
+    bairro: "Alto da Boa Vista",
     cidade: "Rio de Janeiro - RJ",
-    cep: "23017-454",
+    cep: "20531-330",
     horario: "17h00",
     observacoes: "Cerimônia e festa acontecerão no mesmo local.",
-    foto: "assets/imagens/aguas-da-prata.jpeg",
-    mapsUrl: "https://www.google.com/maps/place/%C3%81guas+da+Prata+Eventos/@-22.9246085,-43.5169632,17z/data=!3m1!4b1!4m6!3m5!1s0x9be0d2c4a93faf:0xb02e4075e0441053!8m2!3d-22.9246085!4d-43.5143883!16s%2Fg%2F11cp7g01rk?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+    foto: "assets/imagens/chateau-do-lago-enfesta.png",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ch%C3%A2teau%20do%20Lago%20Enfesta%20Estr.%20do%20A%C3%A7ude%2C%20707%20-%20Alto%20da%20Boa%20Vista%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020531-330"
   },
 
   festa: {
-    local: "Águas da Prata",
+    local: "Château do Lago Enfesta",
     horario: "Após a cerimônia",
     observacoes: "A recepção será realizada no mesmo endereço da cerimônia."
   },
