@@ -1925,3 +1925,313 @@ h1, h2, h3, h4, h5 {
   .gallery-grid { grid-template-columns: 1fr 1fr; }
   .mural-grid { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* =============================================================
+   INTRO — ANIMAÇÃO DE ABERTURA DO CONVITE
+============================================================= */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 65%, #2c1a08 0%, #0c0703 100%);
+  transition: opacity 0.9s var(--ease), visibility 0.9s var(--ease);
+}
+.intro-overlay.intro-hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Partículas douradas flutuantes */
+.intro-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--mel-antigo);
+  pointer-events: none;
+  animation: icParticle linear infinite;
+  opacity: 0;
+}
+@keyframes icParticle {
+  0%   { transform: translateY(0) scale(0.4); opacity: 0; }
+  12%  { opacity: 0.65; }
+  88%  { opacity: 0.2; }
+  100% { transform: translateY(-65vh) scale(1.1); opacity: 0; }
+}
+
+/* Cena central */
+.intro-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container do envelope — perspective aqui para o rotateX do flap */
+.intro-envelope {
+  position: relative;
+  width: 400px;
+  height: 260px;
+  perspective: 900px;
+}
+
+/* Corpo do envelope */
+.env-body {
+  position: absolute;
+  inset: 0;
+  background: #f2ece0;
+  border-radius: 2px;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(200, 161, 101, 0.22);
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Linhas de dobra diagonais simuladas */
+.env-body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(160,140,110,0.14) 0%, transparent 48%),
+    linear-gradient(225deg, rgba(160,140,110,0.14) 0%, transparent 48%);
+}
+
+/* Dobra inferior em V */
+.env-bottom-fold {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-bottom: 100px solid rgba(195, 178, 150, 0.38);
+}
+
+/* Cartão que emerge do envelope */
+.env-card {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0px);
+  width: 288px;
+  height: 300px;
+  background: var(--off-white);
+  border: 1px solid rgba(200, 161, 101, 0.28);
+  z-index: 1;
+  transition: transform 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    0 2px 16px rgba(0, 0, 0, 0.07),
+    inset 0 0 40px rgba(200, 161, 101, 0.04);
+}
+.env-card.risen {
+  transform: translateX(-50%) translateY(-252px);
+}
+
+/* Conteúdo interno do cartão */
+.env-card-inner {
+  padding: 17px 24px 14px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.env-card-inner.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.ic-eyebrow {
+  font-family: var(--font-texto);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: var(--mel-antigo);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.ic-monogram {
+  font-family: var(--font-decorativo);
+  font-size: 2rem;
+  color: var(--texto-escuro);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.ic-monogram span {
+  font-size: 1.65rem;
+  color: var(--mel-antigo);
+}
+
+.ic-rule {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 9px auto;
+  width: 72%;
+}
+.ic-rule::before,
+.ic-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--mel-antigo), transparent);
+}
+.ic-rule em {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--mel-antigo);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+.ic-rule.thin {
+  margin: 7px auto;
+  width: 48%;
+}
+.ic-rule.thin::before,
+.ic-rule.thin::after {
+  background: linear-gradient(to right, transparent, var(--borda-claro), transparent);
+}
+.ic-rule.thin em {
+  width: 3px;
+  height: 3px;
+  background: var(--borda-claro);
+}
+
+.ic-names {
+  font-family: var(--font-titulo);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--texto-escuro);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.ic-amp {
+  font-family: var(--font-decorativo);
+  font-size: 1.6rem;
+  color: var(--mel-antigo);
+  line-height: 1;
+}
+
+.ic-date {
+  font-family: var(--font-titulo);
+  font-size: 0.9rem;
+  color: var(--texto-medio);
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+}
+.ic-venue {
+  font-family: var(--font-texto);
+  font-size: 0.57rem;
+  letter-spacing: 0.17em;
+  color: var(--texto-claro);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ic-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  background: transparent;
+  border: 1px solid var(--mel-antigo);
+  color: var(--mel-antigo);
+  font-family: var(--font-texto);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    background 0.28s var(--ease),
+    color 0.28s var(--ease);
+}
+.ic-btn.visible {
+  opacity: 1;
+  transform: none;
+}
+.ic-btn:hover {
+  background: var(--mel-antigo);
+  color: var(--off-white);
+}
+
+/* Aba triangular do envelope (flap) */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 140px;
+  background: linear-gradient(155deg, #ede6d6 35%, #e2d9c8 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  z-index: 4;
+  backface-visibility: hidden;
+  transition: transform 1.05s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.env-flap.open {
+  transform: rotateX(-180deg);
+}
+
+/* Lacre de cera com monograma */
+.env-seal {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle at 32% 28%, #d4aa22 0%, #8b6000 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.48s ease, opacity 0.48s ease;
+}
+.env-seal.broke {
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+}
+.env-seal span {
+  font-family: var(--font-decorativo);
+  font-size: 1rem;
+  color: #fdf0cc;
+  letter-spacing: -0.02em;
+}
+
+/* ── Responsividade do intro ── */
+@media (max-width: 500px) {
+  .intro-envelope {
+    width: 310px;
+    height: 200px;
+  }
+  .env-flap {
+    width: 310px;
+    height: 108px;
+  }
+  .env-bottom-fold {
+    border-left-width: 155px;
+    border-right-width: 155px;
+    border-bottom-width: 78px;
+  }
+  .env-card {
+    width: 224px;
+    height: 232px;
+    top: 8px;
+  }
+  .env-card.risen {
+    transform: translateX(-50%) translateY(-196px);
+  }
+  .ic-monogram { font-size: 1.65rem; }
+  .ic-names    { font-size: 1.1rem; }
+}
