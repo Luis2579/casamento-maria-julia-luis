@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function init() {
-  initIntro();
   setupNavbar();
   initCountdown();
   renderHistoria();
@@ -1041,50 +1040,3 @@ function escapeHtml(str) {
 // ─────────────────────────────────────────────────────────────
 
 
-// =============================================================
-// 0. INTRO — ANIMAÇÃO DO CONVITE SENDO ABERTO
-// =============================================================
-
-function initIntro() {
-  const overlay = document.getElementById('introOverlay');
-  if (!overlay) return;
-
-  document.body.style.overflow = 'hidden';
-
-  // Partículas douradas flutuantes
-  const pContainer = document.getElementById('introParticles');
-  for (let i = 0; i < 30; i++) {
-    const p = document.createElement('div');
-    p.className = 'intro-particle';
-    const size = 2 + Math.random() * 4;
-    p.style.width    = size + 'px';
-    p.style.height   = size + 'px';
-    p.style.left     = Math.random() * 100 + 'vw';
-    p.style.bottom   = Math.random() * 20 + 'vh';
-    p.style.animationDuration = (5 + Math.random() * 7) + 's';
-    p.style.animationDelay    = (Math.random() * 5) + 's';
-    pContainer.appendChild(p);
-  }
-
-  // Sequência de animação
-  const seal  = document.getElementById('envSeal');
-  const flap  = document.getElementById('envFlap');
-  const card  = document.getElementById('envCard');
-  const inner = document.getElementById('envCardInner');
-  const btn   = document.getElementById('introBtn');
-
-  setTimeout(() => seal.classList.add('broke'),   750);
-  setTimeout(() => flap.classList.add('open'),   1150);
-  setTimeout(() => card.classList.add('risen'),  2100);
-  setTimeout(() => inner.classList.add('visible'), 3150);
-  setTimeout(() => btn.classList.add('visible'),  4050);
-
-  btn.addEventListener('click', fecharIntro);
-}
-
-function fecharIntro() {
-  const overlay = document.getElementById('introOverlay');
-  overlay.classList.add('intro-hide');
-  document.body.style.overflow = '';
-  overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
-}
